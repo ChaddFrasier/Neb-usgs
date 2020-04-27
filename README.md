@@ -2,7 +2,7 @@
 This repository is designed to serve as a helping guide to any USGS employee or contractor that need to learn how to use the compute cluster at a much faster pace than just learning from the documentation alone. Let me repeat, ALONE. That means that I expect you to read the documentation because it is your responsibility to everyone who uses Nebula to know how it allocates resources and uses CPUs and memory to complete massive workloads. Plus it really helps to understand how the WM (Workload Manager) operates.
 
 ## DISCLAIMER
-**This repository could be used as a general use reference to any Slurm Workload Manager, but that being said scripts in this repo are designed for people familiar with ISIS3 and specifically for USGS internal staff**.
+**This repository could be used as a general use reference to any Slurm Workload Manager, but that being said, scripts in this repo are designed for people familiar with ISIS3 and specifically for USGS internal staff**.
 
 *In this document I will use `(USGS)` in the headers to tell which sections are for USGS users only*
 
@@ -10,6 +10,8 @@ This repository is designed to serve as a helping guide to any USGS employee or 
 Nebula is a Slurm Implementation that is used by USGS Astro employees to process very large sums of data files.
 The main purpose of this system is to run programs and jobs in hours on a super powerful machine to speed up a
 processing task that would take weeks for a normal machine to complete.
+
+Nebula uses Slurm to manage its resources and schedule jobs. Slurm is an open-source, highly scalable cluster management and job scheduling system for large and small Linux clusters. This system is used in many fields and has uses in many fields yet to be discovered. This document can serve as a helping hand for anyone who wants to learn more about what a system like this could be used for and how to use it yourself.
 
 ## Prerequisites (USGS)
 IT has to clear you for connection to Nebula. But After you get clearance you should be able to simply ssh in using your USGS credentials.
