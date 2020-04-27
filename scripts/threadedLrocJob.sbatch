@@ -52,7 +52,7 @@ rm ${proc}/isis/*even.cub
 rm ${proc}/isis/*odd.cub
 
 # find all cal.cub's and then pipe the list to the parallel function to run ISIS specpix
-ls ${proc}/isis/*.cal.cub | parallel "specpix from={} to={//}/{/.}.noneg.cub"
+ls ${proc}/isis/*.cal.cub | parallel "specpix from={} to={//}/{/.}.noneg.cub nullmin=-1.0 nullmax=0.0"
 
 # remove the uneeded files
 rm ${proc}/isis/*.cal.cub
@@ -74,11 +74,11 @@ rm ${proc}/isis/*map.cub
 
 # crop as much as possible
 # all unit 4
-ls ${proc}/isis/*unit4.cub | parallel "cropspecial from={} to={//}/{/.}.crop.cub nullmin=-1.0 nullmax=0.0"
+ls ${proc}/isis/*unit4.cub | parallel "cropspecial from={} to={//}/{/.}.crop.cub"
 # all unit 23
-ls ${proc}/isis/*unit23.cub | parallel "cropspecial from={} to={//}/{/.}.crop.cub nullmin=-1.0 nullmax=0.0"
+ls ${proc}/isis/*unit23.cub | parallel "cropspecial from={} to={//}/{/.}.crop.cub"
 # all unit 39
-ls ${proc}/isis/*unit39.cub | parallel "cropspecial from={} to={//}/{/.}.crop.cub nullmin=-1.0 nullmax=0.0"
+ls ${proc}/isis/*unit39.cub | parallel "cropspecial from={} to={//}/{/.}.crop.cub"
 
 # remove unneeded cubs
 rm ${proc}/isis/*unit23.cub
