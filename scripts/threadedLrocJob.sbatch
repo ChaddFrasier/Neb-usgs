@@ -1,12 +1,14 @@
 #!/bin/bash
 # This script demonstrates how to call ISIS functions on more than 1 file and have each file be processed on a different core
+# this process is much faster than the LrocJob.sbatch files because this script utilizes multithreading to process each file
+# faster than using a single processing core.
 
 # Nebula Config
 # -------------
 # set the job name
 #SBATCH --job-name=lunar-thread
 
-# Set a time max to 5 hour
+# Set a time max to 12 hour
 #SBATCH --time=12:00:00
 #SBATCH --partition=longall
 
@@ -14,12 +16,12 @@
 #SBATCH --output=lunar-thread-test-%j.out      # standard output file; includes job array id,  array index, and node name in filename
 #SBATCH --error=lunar-thread-test-%j.err       # standard error file; includes job array id, array index, and node name in filename
 
-# setup slurm to use 1 node per task and with 4 cpu cores
-#SBATCH --nodes=1
-#SBATCH --ntasks-per-node=1
-#SBATCH --cpus-per-task=4
+# -- THIS IS WHERE THE CORES ARE CONFIGURED --
+#SBATCH --nodes=1                           # Use 1 processing node
+#SBATCH --ntasks-per-node=1                 # Allow only 1 file per node
+#SBATCH --cpus-per-task=4                   # give the node 4 cores to use
 
-# give +2GB of memory to the cpus from the default
+# give +2GB of memory to the cpus from the default ( default = 2GB )
 #SBATCH --mem-per-cpu=4G
 
 # Send an email when the job begins and ends.
@@ -31,6 +33,8 @@
 path=/scratch/cfrasier/live
 proc=${path}/proc
 downloader=${path}/lunar-downloader
+
+# set ouptut path to isis/ and isis/text folders
 output=/work/projects/photometry/LROC/WAC/Apollo16
 
 # copy the files from Apollo16 into the work dir

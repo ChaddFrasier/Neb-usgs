@@ -1,26 +1,25 @@
 #!/bin/bash
-# Testing multithreaded ISIS programs
+# This script uses a single processor to process a list of files in a batch format
+# ISIS -batchlist is serial. This process will take about an hour per file.
 
 # set the job name
 #SBATCH --job-name=lunar-serial
 
-# Set a time limit for 48 hour
+# Set a time limit for 72 hour
 #SBATCH --time=72:00:00
 #SBATCH --partition=longall
 
 # send output to a log file
-#SBATCH --output=lunar-serial-test-%j.out      # standard output file; includes job array id,  array index, and node name in filename
-#SBATCH --error=lunar-serial-test-%j.err       # standard error file; includes job array id, array index, and node name in filename
+#SBATCH --output=lunar-serial-test-%j.out      # standard output file; includes job array id ( %j )
+#SBATCH --error=lunar-serial-test-%j.err       # standard error file; includes job array id ( %j )
 
-# In this example, we want to run a script that is multithreaded and uses 14 threads,
-#  so we need to make sure that
+# In this example, we want to run a script that is only using 1 processor for each file
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
 #SBATCH --cpus-per-task=1
-#SBATCH --mem-per-cpu=4G
+#SBATCH --mem-per-cpu=4G  # +2GB
 
-# Send an email when the job begins and ends. For array jobs, you will only receive 2 emails:
-#  one when the first task starts running and another when all jobs have exited
+# Send an email when the job begins and ends
 #SBATCH --mail-type=BEGIN,END
 #SBATCH --mail-user=cfrasier@contractor.usgs.gov
 
@@ -166,9 +165,12 @@ rm ${path}/isis/*pho.cub
 isis2ascii -batchlist=phofiles.lis from=${path}/isis/\$1.trim.cub to=${path}/isis/text/\$1.trim.txt setpixelvalues=yes nullvalue=-999 lrsvalue=-999 lisvalue=-999 hisvalue=-999
 
 # zip to output path
+# TODO: this processes and finished in the same dirrectory
 gzip ${path}/isis/M*.cub > ${path}/isis/
 
 # zip to output path
+# TODO: this processes and finished in the same dirrectory
 gzip ${path}/isis/text/*.txt > ${path}/isis/text/
 
+# remove list of phocubes
 rm phofiles.lis
