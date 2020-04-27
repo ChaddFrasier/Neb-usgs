@@ -1,8 +1,8 @@
 # Neb-usgs
 
-### DISCLAIMER
+## DISCLAIMER
 This repository could be used as a general use reference to any Slurm Workload Manager, **but that being said scripts in this repo are designed for people familiar with ISIS3 and specifically for USGS internal staff**.
--------------------------------------------------------------------------------------
+
 This repository is designed to serve as a helping guide to any USGS employee or contractor that need to learn how to use the compute cluster at a much faster pace than just learning from the documentation alone. Let me repeat, ALONE. That means that I expect you to read the documentation because it is your responsibility to everyone who uses Nebula to know how it allocates resources and uses CPUs and memory to complete massive workloads. Plus it really helps to understand how the WM (Workload Manager) operates.
 
 
