@@ -4,10 +4,10 @@ This repository is designed to serve as a helping guide to any USGS employee or 
 ## DISCLAIMER
 **This repository could be used as a general use reference to any Slurm Workload Manager, but that being said scripts in this repo are designed for people familiar with ISIS3 and specifically for USGS internal staff**.
 
-*In this document I will use `(USGS)` in the headers to tell which sections will not apply to Non-DOI Employees.*
+*In this document I will use `(USGS)` in the headers to tell which sections are for USGS users only*
 
 ## Introduction
-Intro to Nebula and what it is and what it is used for.
+Nebula is a Slurm Implementation that is used by USGS Astro employees to process very large sums of data files. The main purpose of this system is to run programs and jobs in hours on a super powerful machine to speed up a processing task that would take weeks for a normal machine to complete.
 
 
 ## Prerequisites (USGS)
