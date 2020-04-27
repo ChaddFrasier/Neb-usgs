@@ -58,7 +58,7 @@ ls ${proc}/isis/*.cal.cub | parallel "specpix from={} to={//}/{/.}.noneg.cub"
 rm ${proc}/isis/*.cal.cub
 
 # call the map phase
-ls ${proc}/isis/*.noneg.cub | parallel "cam2map from={} map=/work/projects/photometry/GeoMap/GeoMapUnitsCrop.cub to={//}/{/.}.map.cub"
+ls ${proc}/isis/*.noneg.cub | parallel "cam2map from={} map=/work/projects/photometry/GeoMap/GeoMapUnitsCrop.cub to={//}/{/.}.map.cub interp=bilinear"
 ls ${proc}/isis/*.map.cub | parallel "map2map from=/work/projects/photometry/GeoMap/GeoMapUnitsCrop.cub map={} to={//}/{/.}.geomap.cub matchmap=TRUE interp=nearestNeighbor"
 
 # remove the uneeded cubes+
@@ -74,11 +74,11 @@ rm ${proc}/isis/*map.cub
 
 # crop as much as possible
 # all unit 4
-ls ${proc}/isis/*unit4.cub | parallel "cropspecial from={} to={//}/{/.}.crop.cub"
+ls ${proc}/isis/*unit4.cub | parallel "cropspecial from={} to={//}/{/.}.crop.cub nullmin=-1.0 nullmax=0.0"
 # all unit 23
-ls ${proc}/isis/*unit23.cub | parallel "cropspecial from={} to={//}/{/.}.crop.cub"
+ls ${proc}/isis/*unit23.cub | parallel "cropspecial from={} to={//}/{/.}.crop.cub nullmin=-1.0 nullmax=0.0"
 # all unit 39
-ls ${proc}/isis/*unit39.cub | parallel "cropspecial from={} to={//}/{/.}.crop.cub"
+ls ${proc}/isis/*unit39.cub | parallel "cropspecial from={} to={//}/{/.}.crop.cub nullmin=-1.0 nullmax=0.0"
 
 # remove unneeded cubs
 rm ${proc}/isis/*unit23.cub
