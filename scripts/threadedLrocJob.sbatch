@@ -32,13 +32,12 @@
 # init env variables
 path=/scratch/cfrasier/live
 proc=${path}/proc
-downloader=${path}/lunar-downloader
 
 # set ouptut path to isis/ and isis/text folders
 output=/work/projects/photometry/LROC/WAC/Apollo16
 
 # copy the files from Apollo16 into the work dir
-rsync -a /work/projects/photometry/LROC/WAC/Apollo16/ --files-from=${downloader}/download40.lis ${proc}
+rsync -a /work/projects/photometry/LROC/WAC/Apollo16/ --files-from=../res/download40.lis ${proc}
 
 # make a list of all the images that need to be processed and pipe the list to the parallel command
 ls ${proc}/*IMG | parallel "lrowac2isis from={} to={//}/isis/{/.}.cub"
