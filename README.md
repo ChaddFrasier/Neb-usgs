@@ -3,7 +3,8 @@ This repository is designed to serve as a helping guide to any USGS employee or 
 
 ## DISCLAIMER
 **This repository could be used as a general use reference to any Slurm Workload Manager, but that being said scripts in this repo are designed for people familiar with ISIS3 and specifically for USGS internal staff**.
-In this document I will use `(USGS)` in the headers to tell which sections will not apply to Non-DOI Employees.
+
+*In this document I will use `(USGS)` in the headers to tell which sections will not apply to Non-DOI Employees.*
 
 ## Introduction
 Intro to Nebula and what it is and what it is used for.
