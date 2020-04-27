@@ -7,14 +7,17 @@ This repository is designed to serve as a helping guide to any USGS employee or 
 *In this document I will use `(USGS)` in the headers to tell which sections are for USGS users only*
 
 ## Introduction
-Nebula is a Slurm Implementation that is used by USGS Astro employees to process very large sums of data files. The main purpose of this system is to run programs and jobs in hours on a super powerful machine to speed up a processing task that would take weeks for a normal machine to complete.
-
+Nebula is a Slurm Implementation that is used by USGS Astro employees to process very large sums of data files.
+The main purpose of this system is to run programs and jobs in hours on a super powerful machine to speed up a
+processing task that would take weeks for a normal machine to complete.
 
 ## Prerequisites (USGS)
-List of things that need to be accomplished before running a job.
-
+IT has to clear you for connection to Nebula. But After you get clearance you should be able to simply ssh in using your USGS credentials.
+You should use the /scratch directory to process all data because that folder has the highest priority in the workload manager configuration,
+so make sure that IT creates a folder in /scratch specifically for you to access and change as you please.
 
 ## Examples
+To begin any job on a Slurm WLM you must invoke the job dispatch command. `sbatch`. Look at [this link](https://slurm.schedmd.com/sbatch.html#lbAG) for some help understanding the options for slurm. I can show the most important ones in this repo.
 
 #### Single Command Line Task
 `sbatch --job-name=EchoExampleJob --wrap="echo 'Slurm Job Ran'" --output=output-job-%j.out`
@@ -23,7 +26,6 @@ List of things that need to be accomplished before running a job.
 Other arguments are:
 1.  `--job-name`: The name of the job so you can see its progress using the command `squeue`.
 2. `--output`: The name of the output file. can also be a path to specify where to place the log file.
-
 
 #### Simple Batch File
 First you must prepare a script to pass to the WLM.
@@ -34,7 +36,7 @@ In what ever path you wish to run the job in, create a file called `slurm-job.sh
 # File Desc: This is a test file for a Slurm job.
 
 #SBATCH --partition=<SOME PARTITION> # required for most architectures but varies for every Slurm instance
-#SBATCH --job-name=myjob
+#SBATCH --job-name=myjobname
 #SBATCH --output=myjob.slurm.out
 
 echo "Slurm Job run from bash script file"
@@ -43,7 +45,6 @@ echo "I can just list commands now"
 
 Lastly, run the job command with the job script as the only argument.
 `sbatch slurm-job.sh`
-
 
 ### Learn More About USGS Nebula
 Reading through these sites will give you basic understanding of the controls you will need to understand and use often when testing. `Ex. 'scancel'` Some of these links will also give you a much stronger understanding of what Nebula is build using and how Nebula allocates its resources.
