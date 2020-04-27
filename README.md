@@ -44,11 +44,11 @@ Lastly, run the job command with the job script as the only argument.
 `sbatch slurm-job.sh`
 
 
-### Learn More About Nebula
+### Learn More About USGS Nebula
 Reading through these sites will give you basic understanding of the controls you will need to understand and use often when testing. `Ex. 'scancel'` Some of these links will also give you a much stronger understanding of what Nebula is build using and how Nebula allocates its resources.
 
 #### Nebula Internal Homepage ( USGS Internal Network * No Public Access *)
 [USGS Employees Only](http://nebula.wr.usgs.gov/#nebula-info)
 
 #### Slurm Workload Manager
-[Slurm](https://slurm.schedmd.com/quickstart.html) is a workload managing tool that operates using nodes and tasks to organize and run processes on multiple processors with various processing cores possibly working on different tasks.
+[Slurm](https://slurm.schedmd.com/quickstart.html) is a workload managing tool that run different operations on a computer using nodes and tasks to manage the resources of the machine and run processes on multiple processors with various processing cores free to work on different jobs all at once.
