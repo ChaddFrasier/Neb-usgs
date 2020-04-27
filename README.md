@@ -15,3 +15,5 @@ Examples of whole scripts or config commands / setup
 
 ### Links
 Links that will help a new user learn how to use the cluster more effectively.
+
+(Internal Site)[http://nebula.wr.usgs.gov/#nebula-info]
