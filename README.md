@@ -1,7 +1,8 @@
 # Neb-usgs
 ##### THIS REPOSITORY COULD BE USED AS A GENERAL REFERENCE FOR SLURM USERS
-###### That being said scripts in this repo are designed for people familiar with ISIS3
-This repository is designed to serve as a helping guide to any USGS employee or contractor that need to learn how to use the compute cluster at a much faster pace than just learning from the documentation alone. Let me repeat, ALONE. That means that I expect you to read the documentation because it is your responsibility to everyone who uses Nebula to know how it allocates resources and uses CPUs and memory to complete massive workloads. Plus it really helps to understand how the WLM ()
+**That being said scripts in this repo are designed for people familiar with ISIS3**
+-------------------------------------------------------------------------------------
+This repository is designed to serve as a helping guide to any USGS employee or contractor that need to learn how to use the compute cluster at a much faster pace than just learning from the documentation alone. Let me repeat, ALONE. That means that I expect you to read the documentation because it is your responsibility to everyone who uses Nebula to know how it allocates resources and uses CPUs and memory to complete massive workloads. Plus it really helps to understand how the WM (Workload Manager) operates.
 
 
 ## Introduction
@@ -13,16 +14,20 @@ List of things that need to be accomplished before running a job.
 
 
 ### Examples
+
 #### Single Command Line Task
 `sbatch --job-name=EchoExampleJob --wrap="echo 'Slurm Job Ran'" --output=output-job-%j.out`
-*Important* Must use keyword `--wrap` to tell WLM that you are sending a string as a command instead of a file.
+
+**Important** Must use keyword `--wrap` to tell WLM that you are sending a string as a command instead of a file.
 Other arguments are:
 1.  `--job-name`: The name of the job so you can see its progress using the command `squeue`.
 2. `--output`: The name of the output file. can also be a path to specify where to place the log file.
 
+
 #### Simple Batch File
 First you must prepare a script to pass to the WLM.
 In what ever path you wish to run the job in, create a file called `slurm-job.sh` that contains these lines and comments
+
 ```
 #!/bin/bash
 # File Desc: This is a test file for a Slurm job.
@@ -34,6 +39,7 @@ In what ever path you wish to run the job in, create a file called `slurm-job.sh
 echo "Slurm Job run from bash script file"
 echo "I can just list commands now"
 ```
+
 Lastly, run the job command with the job script as the only argument.
 `sbatch slurm-job.sh`
 
