@@ -8,8 +8,8 @@
 # set the job name
 #SBATCH --job-name=lunar-thread
 
-# Set a time max to 12 hour
-#SBATCH --time=12:00:00
+# Set a time max to 72 hour
+#SBATCH --time=72:00:00
 #SBATCH --partition=longall
 
 # send output to a log file
