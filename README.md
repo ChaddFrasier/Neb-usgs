@@ -1,5 +1,9 @@
 # Neb-usgs
-This repository is designed to serve as a helping guide to any USGS employee or contractor that need to learn how to use the compute cluster at a much faster pace than just learning from the documentation alone. Let me repeat, ALONE. That means that I expect you to read the documentation because it is your responsibility to everyone who uses Nebula to know how it allocates resources and uses CPUs and memory to complete massive workloads. Plus it really helps to understand how the WM (Workload Manager) operates.
+This repository is designed to serve as a helping guide to any USGS employee or contractor that need to learn how
+to use the compute cluster at a much faster pace than just learning from the documentation alone. Let me repeat,
+ALONE. That means that I expect you to read the documentation because it is your responsibility to everyone who
+uses Nebula to know how it allocates resources and uses CPUs and memory to complete massive workloads. Plus it
+really helps to understand how the WM (Workload Manager) operates.
 
 ## DISCLAIMER
 **This repository could be used as a general use reference to any Slurm Workload Manager, but that being said, scripts in this repo are designed for people familiar with ISIS3 and specifically for USGS internal staff**.
@@ -31,7 +35,7 @@ Other arguments are:
 
 #### Simple Batch File
 First you must prepare a script to pass to the WLM.
-In what ever path you wish to run the job in, create a file called `slurm-job.sh` that contains these lines and comments
+In what ever path you wish to run the job in, create a file called `slurm-job.sbatch` that contains these lines and comments
 
 ```
 #!/bin/bash
@@ -46,7 +50,30 @@ echo "I can just list commands now"
 ```
 
 Lastly, run the job command with the job script as the only argument.
-`sbatch slurm-job.sh`
+`sbatch slurm-job.sbatch`
+
+#### Multi-Processor Example
+For this example we want to create another script file, call it `slurm-threaded.sbatch`.
+
+```
+#!/bin/bash
+# File Desc: This is a test file to show how to initialize a slurm job using multiple processing cores on a single node
+#SBATCH --job-name=threadedjobname
+#SBATCH --time=01:00:00
+#SBATCH --partition=<Some Partition>
+#SBATCH --output=threaded.slurm.out
+
+# Here is where we can initialize the processor architecture for the job
+#SBATCH --nodes=1                           # Use 1 processing node
+#SBATCH --ntasks-per-node=1                 # Allow only 1 file per node
+#SBATCH --cpus-per-task=4                   # give the node 4 cores to use
+
+# give +2GB of memory to the cpus from the default ( default = 2GB )
+#SBATCH --mem-per-cpu=4G
+
+parallel "echo 'Echoed from some core on node'"
+```
+Then, just run the dispatch command again. `sbatch slurm-threaded.sbatch`
 
 ### Learn More About USGS Nebula
 Reading through these sites will give you basic understanding of the controls you will need to understand and use often when testing. `Ex. 'scancel'` Some of these links will also give you a much stronger understanding of what Nebula is build using and how Nebula allocates its resources.
