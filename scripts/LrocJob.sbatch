@@ -6,7 +6,7 @@
 #SBATCH --job-name=lunar-serial
 
 # Set a time limit for 72 hour
-#SBATCH --time=72:00:00
+#SBATCH --time=25-00:00:00
 #SBATCH --partition=longall
 
 # send output to a log file

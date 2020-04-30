@@ -31,19 +31,23 @@ def main():
 
     # run the download command depending on the OS
     if( platform.system() == "Linux"):
-        # LINUX OS
+        # Linux OS
         # call wget with multiple processes ignore file that already exist
         os.system( "xargs -n 1 -P " + str(cpu_count) + " wget -nc -q < " +  str(argv.input_file) )
         return 0
     elif( platform.system() == "Windows" ):
-        # WINDOWS OS
+        # Windows OS
+        # TODO: find the command to download in parallel on windows
         print("RUN SOME COMMAND TO DOWNLOAD THE FILES ON WINDOWS OS")
         return 0
     elif( platform.system() == "Darwin" ):
-        # WINDOWS OS
+        # Mac OS
+        # TODO: find the command to download in parallel on MAC
+
         print("RUN SOME COMMAND TO DOWNLOAD THE FILES ON MAC OS")
         return 0
     else:
+        # return unknown error
         print("Unknown OS")
         return -1
 

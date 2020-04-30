@@ -23,7 +23,7 @@ You should use the /scratch directory to process all data because that folder ha
 so make sure that IT creates a folder in /scratch specifically for you to access and change as you please.
 
 ## Examples
-To begin any job on a Slurm WLM you must invoke the job dispatch command. `sbatch`. Look at [this link](https://slurm.schedmd.com/sbatch.html#lbAG) for some help understanding the options for slurm. I can show the most important ones in this repo.
+To begin any job on a Slurm WLM you must invoke the job dispatch command. `sbatch`. Look at [this link](https://slurm.schedmd.com/sbatch.html#lbAG) for some help understanding the options for slurm jobss.
 
 #### Single Command Line Task
 `sbatch --job-name=EchoExampleJob --wrap="echo 'Slurm Job Ran'" --output=output-job-%j.out`
