@@ -57,8 +57,8 @@ ls ${proc}/isis/*.cal.cub | parallel "specpix from={} to={//}/{/.}.noneg.cub nul
 rm ${proc}/isis/*.cal.cub
 
 # call the map phase
-ls ${proc}/isis/*.noneg.cub | parallel "cam2map from={} map=/work/projects/photometry/GeoMap/GeoMapUnitsCrop.cub to={//}/{/.}.map.cub interp=bilinear"
-ls ${proc}/isis/*.map.cub | parallel "map2map from=/work/projects/photometry/GeoMap/GeoMapUnitsCrop.cub map={} to={//}/{/.}.geomap.cub matchmap=TRUE interp=nearestNeighbor"
+ls ${proc}/isis/*.noneg.cub | parallel "cam2map from={} map=/work/projects/photometry/GeoMap/GeoMapUnitsCrop1deg.cub to={//}/{/.}.map.cub interp=bilinear"
+ls ${proc}/isis/*.map.cub | parallel "map2map from=/work/projects/photometry/GeoMap/GeoMapUnitsCrop1deg.cub map={} to={//}/{/.}.geomap.cub matchmap=TRUE interp=nearestNeighbor"
 
 # remove the uneeded cubes+
 rm ${proc}/isis/*.noneg.cub
