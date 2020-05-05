@@ -129,6 +129,9 @@ rm ${proc}/isis/*.pho.cub
 # running the ascii extraction to text file in folder text
 ls ${proc}/isis/*.trim.cub | parallel "isis2ascii from={} to={//}/text/{/.}.txt setpixelvalues=yes nullvalue=-999 lisvalue=-999 hisvalue=-999"
 
+# clean the text files using Laszlo's method but using parallel instead of looping
+ls ${proc}/isis/text/*.txt | parallel "sed -i 's/:/ /g' {}"
+
 # zip all cubes to the output folder
 ls ${proc}/isis/*.cub | parallel "gzip -c {}  > ${output}/isis/{/.}.cub.gz"
 ls ${proc}/isis/text/*.txt | parallel "gzip -c {}  > ${output}/isis/text/{/.}.txt.gz"
