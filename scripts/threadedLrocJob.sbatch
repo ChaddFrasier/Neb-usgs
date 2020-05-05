@@ -30,7 +30,7 @@
 # -------------
 
 # init env variables
-path=/scratch/cfrasier/live
+path=/scratch/cfrasier/testing
 proc=${path}/proc
 
 # set ouptut path to isis/ and isis/text folders
